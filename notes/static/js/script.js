@@ -1,9 +1,15 @@
+
 $(document).ready(function(){
 
-    $('#menu').click(function(){
-        $(this).toggleClass('fa-times');
-        $('.navbar').toggleClass('nav-toggle');
-    });
+    // const button = document.getElementById("myButton");
+
+    // myButton.addEventListner("click",() => {
+    // document.body.classList.toggle("dark-mode");
+    // });
+    // $('#menu').click(function(){
+    //     $(this).toggleClass('fa-times');
+    //     $('.navbar').toggleClass('nav-toggle');
+    // });
 
     $('#login').click(function(){
         $('.login-form').addClass('popup');

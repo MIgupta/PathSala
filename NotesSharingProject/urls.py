@@ -13,16 +13,37 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from notes.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+# #####################################
+# from django.shortcuts import render, redirect, HttpResponse
+# from django.urls import reverse
+# from django.contrib import messages
+# from django.conf import settings
+# from django.core.files.storage import default_storage
+# from django.core.files.base import ContentFile, File
+
+# from .forms import ServerForm
+# from .models import Server, Code
+# import string
+# import random
+# from .import firebase
+
+# ######################################
+
+
 urlpatterns = [
+    path('server/', include('server.urls')),  ## way to include new project
     path('admin/', admin.site.urls),
     path('about/',about,name='about'),
-    path('',index,name='index'),
+    path('mode/',mode,name='mode'),
+    path("",index,name='index'),
     path('contact', contact, name='contact'),
     path('login', userlogin, name='login'),
     path('login_admin', login_admin, name='login_admin'),
@@ -49,4 +70,28 @@ urlpatterns = [
     path('unread_queries', unread_queries, name='unread_queries'),
     path('read_queries', read_queries, name='read_queries'),
     path('view_queries/<int:pid>', view_queries, name='view_queries'),
+   
+
+
+
+
+
+
+
+
+    ####################################################
+#     path("", views.home, name='server'),
+#     path('manage/', views.manage_server, name='server-manage'),
+#     path('create/', views.create_server, name='server-create'),
+#     path("upload/", views.upload, name='server-upload'),
+#     path('delete/<str:id>', views.delete, name='server-delete'),
+#     path('login/', views.login, name='server-login'),
+#     path('code/<str:code_id>', views.code, name="server-code"),
+#     path('codelist/<server_id>', views.code_list, name='server-code-list'),
+#     path('deleteserver', views.delete_server, name='delete-server'),
+#     path('changepassword', views.change_password, name='changepassword'),
+#     path('uploadfile', views.upload_file, name='server-file-upload'),
+#     path('deletefile/<folder>', views.delete_file, name='server-delete-file'),
+# ########################################################################################    # 
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
