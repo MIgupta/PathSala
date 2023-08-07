@@ -11,12 +11,10 @@ import random
 serverID = 'LoginServerID'
 ## On changing this variable:
 # Also change in: 1. core/base.html, 2. server/base.html
-
-## Time in second for expiery of session
-session_expiry = 14400
+session_expiry = 2 * 24 * 60 * 60 * 1000
 
 # Create your views here.
-def home(request):
+def home(request):    
     if request.method == "POST":
         if request.POST['type'] == "code":
             code_id = request.POST['code_id']
@@ -25,7 +23,6 @@ def home(request):
             server_id = request.POST['server_id']
             return redirect('server-code-list', server_id)
     return render(request, 'server/index.html')
-
 
 
 def login(request):
@@ -49,12 +46,15 @@ def login(request):
 
 def manage_server(request):
     context={}
-    if request.session.get(serverID, False):
-        server_id = request.session.get(serverID)
-    else:
-        return redirect('server-create')
-    data = Code.objects.filter(server_id=server_id)
-    context['data'] = data
+    try:
+        if request.session.get(serverID, False):
+            server_id = request.session.get(serverID)
+        else:
+            return redirect("server-login")
+        data = Code.objects.filter(server_id=server_id)
+        context['data'] = data
+    except Exception as e:
+        print(e)
     return render(request, 'server/manage_server.html', context=context)
 
 def delete(request, id):

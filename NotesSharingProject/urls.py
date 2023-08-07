@@ -21,29 +21,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-# #####################################
-# from django.shortcuts import render, redirect, HttpResponse
-# from django.urls import reverse
-# from django.contrib import messages
-# from django.conf import settings
-# from django.core.files.storage import default_storage
-# from django.core.files.base import ContentFile, File
-
-# from .forms import ServerForm
-# from .models import Server, Code
-# import string
-# import random
-# from .import firebase
-
-# ######################################
 
 
 urlpatterns = [
+    path("",index,name='index'),
+    path('todo/', include('todo.urls')),
+    path('Todo/', include('todo.urls')),
     path('server/', include('server.urls')),  ## way to include new project
+    # path('Todo_List/', include('Todo_List.urls')),
     path('admin/', admin.site.urls),
     path('about/',about,name='about'),
     path('mode/',mode,name='mode'),
-    path("",index,name='index'),
     path('contact', contact, name='contact'),
     path('login', userlogin, name='login'),
     path('login_admin', login_admin, name='login_admin'),

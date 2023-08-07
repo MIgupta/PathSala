@@ -36,7 +36,8 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.id
-    
+
+
 
 
 #################################################
@@ -48,4 +49,4 @@ class Contact(models.Model):
 #     server_id = models.CharField(max_length=10)
 #     code_id = models.CharField(max_length=6, default='na')
 #     title = models.CharField(max_length=60)
-#     code = models.TextField()    
+#     code = models.TextField()

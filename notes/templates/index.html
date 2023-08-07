@@ -29,7 +29,7 @@
 
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'mode' %}">Mode</a></li>
+            {% comment %} <li><a href="{% url 'mode' %}">Mode</a></li> {% endcomment %}
             <li><a class="active" href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
@@ -37,6 +37,7 @@
             <li><a href="{% url 'login' %}">User Login</a></li>
             <li><a href="{% url 'login_admin' %}">Admin Login</a></li>
             <li><a href="{% url 'server' %}">CU SHARE</a></li>
+            {% comment %} <li><a href="{% url 'Todo' %}">TODO</a></li> {% endcomment %}
             {% comment %}  {% endcomment %}
         </ul>
     </nav>
